@@ -41,23 +41,12 @@
     [self.view addSubview:btn];
     if (photos.count > 0){
     array = [photos sortedArrayUsingSelector:@selector(compare:)];
-
-    UIImageView * image1 = [[UIImageView alloc]initWithFrame:CGRectMake(100, 100, 50, 50)];
-    image1.image = [self.dataArray objectAtIndex:[[array objectAtIndex:0] floatValue]];
-    [self.view addSubview:image1];
-    
-    UIImageView * image2 = [[UIImageView alloc]initWithFrame:CGRectMake(100, 170, 50, 50)];
-    image2.image = [self.dataArray objectAtIndex:[[array objectAtIndex:1] floatValue]];
-    [self.view addSubview:image2];
-
-    UIImageView * image3 = [[UIImageView alloc]initWithFrame:CGRectMake(100, 250, 50, 50)];
-    image3.image = [self.dataArray objectAtIndex:[[array objectAtIndex:2] floatValue]];
-    [self.view addSubview:image3];
-
-    
-    UIImageView * image4 = [[UIImageView alloc]initWithFrame:CGRectMake(100, 330, 50, 50)];
-    image4.image = [self.dataArray objectAtIndex:[[array objectAtIndex:3] floatValue]];
-    [self.view addSubview:image4];
+        
+        for (int i = 0; i < array.count; i ++) {
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(100, 100 + i * 60, 50, 50)];
+            imageView.image = [self.dataArray objectAtIndex:[[array objectAtIndex:i] integerValue]];
+            [self.view addSubview:imageView];
+        }
     }
 }
 - (void)tapShow{
